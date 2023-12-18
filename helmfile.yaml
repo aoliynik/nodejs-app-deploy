@@ -27,6 +27,8 @@ releases:
   - app-values.yaml
   - ingress:
       host: app2.aws.oliynyk.me
+    image:
+      tag: {{ requiredEnv "IMAGE_TAG" }}
 
 - name: app3
   namespace: webapp 
@@ -35,6 +37,8 @@ releases:
   - app-values.yaml
   - ingress:
       host: app3.aws.oliynyk.me
+    image:
+       tag: {{ requiredEnv "IMAGE_TAG" }}
 
 - name: app4
   namespace: webapp 
@@ -43,5 +47,6 @@ releases:
   - app-values.yaml
   - ingress:
       host: app4.aws.oliynyk.me
-
+    image:
+       tag: {{ requiredEnv "IMAGE_TAG" }}
 

@@ -1,6 +1,5 @@
 image:
   repository: aoliynyk/nodejs-app
-  tag: 15
   pullPolicy: Always
 
 replicaCount: 4
