@@ -2,10 +2,11 @@ image:
   repository: aoliynyk/nodejs-app
   pullPolicy: Always
 
-replicaCount: 4
-
 service:
   targetPort: 8080
+  annotations:
+     alb.ingress.kubernetes.io/target-type: 'ip'
+
 
 resources:
   limits:
