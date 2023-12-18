@@ -11,42 +11,47 @@ helmDefaults:
   historyMax: 10
   createNamespace: true
 
+templates:
+  webapp:
+     namespace: webapp
+     chart: ./charts/webapp
+     set:
+     - name: image.tag
+       value: {{ requiredEnv "IMAGE_TAG" }}
+
+---
 releases:
 - name: app1
-  namespace: webapp
-  chart: ./charts/webapp
+  inherit:
+  - template: webapp
   values:
   - app-values.yaml
   - ingress:
-      host: app1.aws.oliynyk.me
+      host: "app1.aws.oliynyk.me"
+
 
 - name: app2
-  namespace: webapp 
-  chart: ./charts/webapp
+  inherit:
+  - template: webapp
   values:
   - app-values.yaml
   - ingress:
-      host: app2.aws.oliynyk.me
-    image:
-      tag: {{ requiredEnv "IMAGE_TAG" }}
+      host: "app2.aws.oliynyk.me"
 
 - name: app3
-  namespace: webapp 
-  chart: ./charts/webapp
+  inherit:
+  - template: webapp
   values:
   - app-values.yaml
   - ingress:
-      host: app3.aws.oliynyk.me
-    image:
-       tag: {{ requiredEnv "IMAGE_TAG" }}
+      host: "app3.aws.oliynyk.me"
+
 
 - name: app4
-  namespace: webapp 
-  chart: ./charts/webapp
+  inherit:
+  - template: webapp
   values:
   - app-values.yaml
   - ingress:
-      host: app4.aws.oliynyk.me
-    image:
-       tag: {{ requiredEnv "IMAGE_TAG" }}
+      host: "app4.aws.oliynyk.me"
 
