@@ -7,9 +7,6 @@ replicaCount: 4
 service:
   targetPort: 8080
 
-#env:
-#  REDIS_SESSION_HOST: redis
-
 resources:
   limits:
     cpu: 700m
@@ -20,10 +17,6 @@ resources:
 
 ingress:
   enabled: true
-  #className: nginx
-  #annotations:
-  #    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
-  #tls:
-#    enabled: true
-#    secretName: benco-io-cert
-
+  className: "alb"
+  annotations:
+     alb.ingress.kubernetes.io/scheme: internet-facing
