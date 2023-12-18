@@ -1,0 +1,30 @@
+image:
+  repository: aoliynyk/nodejs-app
+  tag: 15
+  pullPolicy: Always
+
+replicaCount: 4
+
+service:
+  targetPort: 3000
+
+#env:
+#  REDIS_SESSION_HOST: redis
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 64Mi
+
+ingress:
+  enabled: true
+  #className: nginx
+  #annotations:
+  #    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
+  #tls:
+#    enabled: true
+#    secretName: benco-io-cert
+
